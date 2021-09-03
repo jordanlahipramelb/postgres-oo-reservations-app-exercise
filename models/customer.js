@@ -19,6 +19,8 @@ class Customer {
    * The set syntax binds an object property to a function to be called when there is an attempt to set that property.
    */
   // if someone tries to assign a falsey value to a customer’s notes, the value instead gets assigned to an empty string.
+
+  // _ is hidden property
   set notes(value) {
     this._notes = value || "";
   }

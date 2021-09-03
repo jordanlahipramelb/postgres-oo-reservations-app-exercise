@@ -15,6 +15,41 @@ class Reservation {
     this.notes = notes;
   }
 
+  /** getting/setting
+   *
+   * The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+   
+    *setter function that will error if number of guests is less than 1
+   *underscore will connect it to this.numGuests
+  only called when error is thrown 
+  */
+  set numGuests(value) {
+    if (value < 1) throw new Error("Can't have less than 1 guest!");
+    this._numGuests = value;
+  }
+  get numGuests() {
+    return this._numGuests;
+  }
+
+  set startAt(value) {
+    if (value instanceof Date && !isNaN(value)) {
+      return (this._startAt = value);
+    } else {
+      throw new Error("Not a valid starting date.");
+    }
+  }
+  get startAt() {
+    return this._startAt;
+  }
+
+  // if someone tries to assign a falsey value to a customer’s notes, the value instead gets assigned to an empty string.
+  set notes(value) {
+    this._notes = value || "";
+  }
+  get notes() {
+    return this._notes;
+  }
+
   /** formatter for startAt */
 
   getformattedStartAt() {
